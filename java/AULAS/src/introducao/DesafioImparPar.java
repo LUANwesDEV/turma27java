@@ -14,10 +14,12 @@ public class DesafioImparPar {
 				if(num < 0) {
 					System.out.println("O numero: "+num+" é negativo, digite numeros positivos.");
 				}
-				
+				/*
 				else if(num==0) {
 					System.out.println("Numero: 0 é neutro");
-				}else if(num%2==0){
+					
+				}
+				*/else if(num%2==0){
 					System.out.println("O numero: "+num+" é par. ");
 				}else {
 					System.out.println("O numero: "+num+ " é impar");
