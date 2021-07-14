@@ -1,19 +1,22 @@
 package PetAnimal;
 
 public class Preguica extends Animal {
-	private String dormindo;
+	private String sobeEmArvore;
+
+	public Preguica(String nome, String emitirSom, boolean correr, int idade, String sobeEmArvore) {
+		super(nome, emitirSom, correr, idade);
+		this.sobeEmArvore = sobeEmArvore;
+	}
+
+	public String getSobeEmArvore() {
+		return sobeEmArvore;
+	}
+
+	public void setSobeEmArvore(String sobeEmArvore) {
+		this.sobeEmArvore = sobeEmArvore;
+	}
+
 	
-	public Preguica(String nome,int idade,String dormindo) {
-		super(nome,idade);
-		this.dormindo = dormindo;
-	}
-
-	public String getDormindo() {
-		return dormindo;
-	}
-
-	public void setDormindo(String dormindo) {
-		this.dormindo = dormindo;
-	}
+	
 	
 }
