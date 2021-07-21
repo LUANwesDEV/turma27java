@@ -150,6 +150,7 @@ public class ProjetoG3Bank {
 							if (continuar == 'S') {
 								System.out.printf(
 										"Você ainda tem %d talões disponiveis, qual quantidade você deseja solicitar? ",
+
 										corrente.getTalao());
 								int qtaCheque = leia.nextInt();
 								corrente.pedirTalao(qtaCheque);
@@ -274,7 +275,6 @@ public class ProjetoG3Bank {
 							System.out.println(new String(new char[50]).replace("\0", "\r\n"));
 							empresa.sair();
 						}
-
 					}
 					if (interacao > 10) {
 						System.out.println("Limite de interação atingido!\n");
@@ -308,9 +308,7 @@ public class ProjetoG3Bank {
 					char op = leia.next().toUpperCase().charAt(0);
 					System.out.println("Qual valor da operação?");
 					double valorOperacao = leia.nextDouble();
-
 					estudante.opcoes(op, valorOperacao);
-
 					System.out.println("Saldo Atual: " + estudante.getSaldo());
 					System.out.println("Limite de Empréstimo Atual: " + estudante.getEmprestimo());
 
@@ -338,7 +336,6 @@ public class ProjetoG3Bank {
 					break;
 				}
 			}
-
 			else if (opcao == 6) { // CHAMA SAIR
 				System.out.println(new String(new char[50]).replace("\0", "\r\n"));
 				System.out.println("Volte Sempre!");

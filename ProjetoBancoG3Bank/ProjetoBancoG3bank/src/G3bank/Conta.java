@@ -8,12 +8,12 @@ abstract class  Conta {
 		private char opcoes;
 		
 		//construtor
-		public Conta(int numero, double saldo) {
-			super();
-			this.numero = numero;
-			this.saldo = saldo;
-		}
-		
+			public Conta(int numero, double saldo) {
+				super();
+				this.numero = numero;
+				this.saldo = saldo;
+			}
+			
 		//construtor vazio
 		public Conta() {
 			super();
