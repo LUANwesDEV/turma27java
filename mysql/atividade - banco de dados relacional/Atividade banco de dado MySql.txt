@@ -1,0 +1,346 @@
+Atividade banco de dados relacional Mysql 1.
+
+Exercicos 1.1 
+
+	create database db_generation_game_online
+
+Exercico 1.2
+
+	use db_generation_game_online
+
+	create table tb_classe (   
+ 		id bigint(5) auto_increment,   
+ 		nome varchar(20) not null,
+ 		idade int,
+ 		computador boolean,
+ 
+   
+   		primary key (id) 
+)
+ 
+	select * from tb_classe
+Exercico 1.3
+
+	create table tb_personagem (   
+  		id bigint auto_increment,
+ 		nome varchar(30) not null,
+  		ataque decimal (5,3),
+    		defesa decimal (5,3),
+   		vidaCoração varchar(30),
+  		arma boolean,
+  		modalidade varchar(30),
+ 		classe_id bigint not null,
+
+ 		primary key (id),
+ 		foreign key (classe_id) references tb_classe (id)
+ )
+
+	select * from tb_personagem 
+
+Exercico 1.4
+	select * from tb_classe
+
+	INSERT INTO tb_classe (nome,idade, computador) VALUES ("Luan ", 19, true);
+	INSERT INTO tb_classe (nome,idade, computador) VALUES ("Maria ", 26, true);
+	INSERT INTO tb_classe (nome,idade, computador) VALUES ("Guilherme ", 22, false);
+	INSERT INTO tb_classe (nome,idade, computador) VALUES ("joana ", 31, true);
+	INSERT INTO tb_classe (nome,idade, computador) VALUES ("Gilberto ", 40, false)
+
+	select * from tb_classe
+
+Exercico 1.5
+
+	select * from tb_personagem 
+
+	INSERT INTO tb_personagem (nome,poder,defesa, vidaCoração, arma, classe_id) VALUES ("Naruto Uzumaki ", 5.000,2.000, "alta", true, 1);
+	INSERT INTO tb_personagem (nome,poder,defesa, vidaCoração, arma, classe_id) VALUES ("Sasuke Uchiha ", 5.000,3.000, "alta", true, 1);
+	INSERT INTO tb_personagem (nome,poder,defesa, vidaCoração, arma, classe_id) VALUES ("Tsunade ", 6.000,6.000, "alta", true, 3);
+	INSERT INTO tb_personagem (nome,poder,defesa, vidaCoração, arma, classe_id) VALUES ("Ino Yamanaka ", 3.200,1.200, "media", true, 3);
+	INSERT INTO tb_personagem (nome,poder,defesa, vidaCoração, arma, classe_id) VALUES ("Shino Aburame ", 2.900,2.000, "meia", true, 2);
+	INSERT INTO tb_personagem (nome,poder,defesa, vidaCoração, arma, classe_id) VALUES ("Temari ", 2.000,1.800, "meia", true, 2);
+	INSERT INTO tb_personagem (nome,poder,defesa, vidaCoração, arma, classe_id) VALUES ("Gaara ", 5.000,4.000, "meia", true, 1);
+	INSERT INTO tb_personagem (nome,poder,defesa, vidaCoração, arma, classe_id) VALUES ("Rock Lee", 4.00,2.000, "meia", true, 2);
+
+	select * from tb_personagem 
+
+Exercico 1.6
+
+	select tb_personagem.nome, tb_personagem.poder from tb_personagem
+	where tb_personagem.poder > 2.000
+	
+	select * from tb_personagem 
+
+Exercico 1.7
+
+	select tb_personagem.nome, tb_personagem.defesa from tb_personagem
+	where tb_personagem.defesa > 1.000 and tb_personagem.defesa < 2.000
+
+Exercico 1.8
+
+	select tb_personagem.nome  from tb_personagem 
+	where tb_personagem.nome like "%c%"
+
+Exercico 1.9
+
+	select tb_personagem.nome, tb_personagem.poder, tb_classe.nome from tb_classe
+	inner join tb_personagem  on tb_personagem.classe_id = tb_personagem.classe_id
+
+Exercico 1.10
+
+	select tb_personagem.nome, tb_personagem.poder  from tb_personagem 
+	where modalidade = "ninjas"
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Atividade 2
+
+Exercicos 2.1 
+create database db_pizzaria_legal
+
+use db_pizzaria_legal;
+Exercicos 2.2
+create table tb_categoria(
+	id bigint(9) auto_increment,
+        sabores varchar(50) not null,
+        tamanho varchar(20) not null,
+        preco decimal(3,2),
+        
+        primary key(id)
+)
+
+select * from tb_categoria
+Exercicos 2.3
+
+create table tb_pizza (
+	id bigint(9) auto_increment,
+        doce varchar(20) not null,
+        salgada varchar(20) not null,
+        vegetariana varchar(20) not null,
+        valorProduto decimal(10,2),
+        praViagem boolean,
+        produtos varchar(30),
+        categoria_id bigint not null,
+        
+        primary key (id),
+        foreign key ( categoria_id) references tb_categoria (id)
+        
+)
+
+select * from tb_pizza
+
+Exercicos 2.4
+
+select * from tb_categoria;
+
+	INSERT INTO tb_categoria (sabores,tamanho, preco, preco1) VALUES ("Salgada "," Grande ",0,60.00);
+	INSERT INTO tb_categoria (sabores,tamanho, preco, preco1) VALUES ("Doce "," Pequena ",0,29.00);
+    	INSERT INTO tb_categoria (sabores,tamanho, preco, preco1) VALUES ("Salgada "," Media ",0,46.00);
+    	INSERT INTO tb_categoria (sabores,tamanho, preco, preco1) VALUES ("Vegetariana "," Grande ",0,48.00);
+   	INSERT INTO tb_categoria (sabores,tamanho, preco, preco1) VALUES ("Doce "," Media ",0,36.00);
+    	INSERT INTO tb_categoria (sabores,tamanho, preco, preco1) VALUES ("Vegetariana "," Grande ",0,58.00);*/
+
+-- alter table tb_categoria add column preco1 decimal(10,2)
+-- alter table tb_categoria drop column preco 
+
+-- select * from tb_pizza;
+
+Exercicos 2.5 
+	
+	INSERT INTO tb_pizza (doce, salgada, vegetariana, valorProduto, praViagem,produtos, categoria_id) VALUES ("Chocolate","Mussarela","Brocolis com queijo",60.00, true,"qualidade", 1);
+	INSERT INTO tb_pizza (doce, salgada, vegetariana, valorProduto, praViagem,produtos, categoria_id) VALUES ("Chocolate com uva","Frango com catupiry","Palmito",29.00, false,"qualidade", 2);
+	INSERT INTO tb_pizza (doce, salgada, vegetariana, valorProduto, praViagem,produtos, categoria_id) VALUES ("Brigadeiro","Atum","Brocolis com queijo",50.00, true,"qualidade", 3);
+	INSERT INTO tb_pizza (doce, salgada, vegetariana, valorProduto, praViagem,produtos, categoria_id) VALUES ("Chocolate com coco","Calabressa","Marguerita",62.00, true,"qualidade", 4);
+	INSERT INTO tb_pizza (doce, salgada, vegetariana, valorProduto, praViagem,produtos, categoria_id) VALUES ("Banana com canela","4 queijos","Milho",56.00, false,"qualidade", 5);
+	INSERT INTO tb_pizza (doce, salgada, vegetariana, valorProduto, praViagem,produtos, categoria_id) VALUES ("Doce de leite","3 queijos","Rúcula",35.00, false,"qualidade", 6);
+	INSERT INTO tb_pizza (doce, salgada, vegetariana, valorProduto, praViagem,produtos, categoria_id) VALUES ("Prestigio","2 queijos","Catupiry",45.00, true,"qualidade", 2);
+INSERT INTO tb_pizza (doce, salgada, vegetariana, valorProduto, praViagem,produtos, categoria_id) VALUES ("Romeu e julieta","Carne Seca","Azeitona",71.00, true,"qualidade", 5); 
+    
+select * from tb_pizza;
+   
+Exercicos 2.6
+  
+	select tb_pizza.salgada ,tb_pizza.valorProduto, tb_pizza.praViagem from tb_pizza
+    	where valorProduto > 45.00 
+Exercicos 2.7    
+    	select tb_pizza.salgada , tb_pizza.valorProduto from tb_pizza
+    	where valorProduto >= 29.00 and tb_pizza.valorProduto <= 60.00 
+Exercicos 2.8
+  	select tb_pizza.salgada, tb_pizza.valorProduto from tb_pizza
+    	where salgada like "%c%"
+Exercicos 2.9   
+  	select tb_pizza.doce , tb_pizza.salgada, tb_categoria.tamanho from tb_categoria
+    	inner join tb_pizza on tb_pizza.categoria_id = tb_pizza.categoria_id 
+Exercicos 2.10  
+	select tb_pizza.doce , tb_pizza.valorProduto from tb_pizza
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Atividade 3
+
+Exercicos 3.1
+	create database db__farmacia_do_bem;
+	
+	use db__farmacia_do_bem;
+Exercicos 3.2
+create table tb_categoria(
+	id bigint(9) auto_increment,
+    	medicamento varchar(50)not null,
+    	Higiene varchar(50) not null,
+    	beleza varchar(50)not null,
+    
+    primary key
+)
+
+select * from tb_categoria;
+
+Exercicos 3.3
+
+create table tb_produto(
+	id bigint(9) auto_increment,
+    	valor decimal(10,2),
+    	cor varchar(50),
+    	tamanho varchar(50),
+    	produto varchar(50),
+    	emFalta  boolean not null,
+    	categoria_id bigint not null,
+    
+    	primary key (id),
+    	foreign key(categoria_id) references tb_produto(id)
+)
+select * from tb_produto
+
+Exercicos 3.4
+
+select * from tb_categoria;
+
+	INSERT INTO tb_categoria (medicamento, higiene, beleza) VALUES ("Doril", "Desodorante","Batom");
+	INSERT INTO tb_categoria (medicamento, higiene, beleza) VALUES ("Dorflex", "Escova de dente","Maquiagem");
+	INSERT INTO tb_categoria (medicamento, higiene, beleza) VALUES ("Cataflam", "Pasta de dente","Condicionador");
+	INSERT INTO tb_categoria (medicamento, higiene, beleza) VALUES ("Dipirona", "Sabonete","Shapoo");
+	INSERT INTO tb_categoria (medicamento, higiene, beleza) VALUES ("Buscopan", "Fiu dental","Creme"); 
+
+Exercicos 3.5
+
+select * from tb_produto;
+
+	INSERT INTO tb_produto (valor, cor, tamanho, produto, emFalta, categoria_id) VALUES (7.50, "Preto","Grande", "Medicamento", false, 1);
+	INSERT INTO tb_produto (valor, cor, tamanho, produto, emFalta, categoria_id) VALUES (33.00, "Azul","Pequeno", "Beleza", false, 2);
+	INSERT INTO tb_produto (valor, cor, tamanho, produto, emFalta, categoria_id) VALUES (66.50, "Branco","Medio", "Higiene", True, 3);
+	INSERT INTO tb_produto (valor, cor, tamanho, produto, emFalta, categoria_id) VALUES (37.00, "Verde","Grande", "Medicamento", true, 4);
+	INSERT INTO tb_produto (valor, cor, tamanho, produto, emFalta, categoria_id) VALUES (52.50, "Rosa","Medio", "Higiene", false, 1);
+	INSERT INTO tb_produto (valor, cor, tamanho, produto, emFalta, categoria_id) VALUES (3.50, "Laranja","Grande", "Beleza", false, 5);
+	INSERT INTO tb_produto (valor, cor, tamanho, produto, emFalta, categoria_id) VALUES (11.80, "Vermelho","Grande", "Medicamento", false, 1);
+	INSERT INTO tb_produto (valor, cor, tamanho, produto, emFalta, categoria_id) VALUES (59.50, "Roxo","Grande", "Medicamento", false, 6); 
+
+select * from tb_produto;
+Exercicos 3.6
+
+	select tb_produto.valor ,tb_produto.produto from tb_produto
+	where valor >50.00
+Exercicos 3.7
+
+	select tb_produto.valor, tb_produto.produto from tb_produto
+	where tb_produto.valor > 3.00 and tb_produto.valor <60.00
+Exercicos 3.8
+
+	select tb_produto.produto from tb_produto
+	where tb_produto.produto like "%b%"
+Exercicos 3.9
+
+	select tb_produto.valor, tb_produto.produto from tb_categoria
+	inner join tb_produto on tb_produto.categoria_id 
+Exercicos 3.10
+
+	select tb_produto.valor, tb_produto.produto from tb_produto
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Atividade 4
+
+Exercicos 4.1
+	create database db_cidade_das_frutas;
+	
+	use db_cidade_das_frutas;
+
+Exercicos 4.2
+
+create table tb_categoria(
+	id bigint(9) auto_increment,
+    	frutaDoce varchar(50)not null,
+    	frutaAzeda varchar(50) not null,
+   	frutaComSemente boolean not null,
+    
+    primary key (id)
+)
+
+select * from tb_categoria;
+
+Exercicos 4.3
+
+create table tb_produto(
+	id bigint(9) auto_increment,
+    	valor decimal(10,2) not null,
+    	frutaDoce varchar(50) not null,
+    	frutaAzeda varchar(50) not null,
+    	tamanho varchar(50) not null,
+   	emFalta  boolean not null,
+    	categoria_id bigint not null,
+    
+    	primary key (id),
+    	foreign key(categoria_id) references tb_produto(id)
+)
+-- select * from tb_produto
+
+
+
+-- select * from tb_categoria;
+
+Exercicos 4.4
+
+	INSERT INTO tb_categoria (frutaDoce, frutaAzeda,frutaComSemente ) VALUES ("Banana", "Limão",true);
+	INSERT INTO tb_categoria (frutaDoce, frutaAzeda,frutaComSemente ) VALUES ("Uva", "Acerrola",true);
+	INSERT INTO tb_categoria (frutaDoce, frutaAzeda,frutaComSemente ) VALUES ("Caqui", "Laranja",true);
+	INSERT INTO tb_categoria (frutaDoce, frutaAzeda,frutaComSemente ) VALUES ("Maçã", "Abacaxi",true);
+	INSERT INTO tb_categoria (frutaDoce, frutaAzeda,frutaComSemente ) VALUES ("Manga", "Amora",true); 
+ 
+-- select * from tb_categoria;
+
+
+
+-- select * from tb_produto;
+
+Exercicos 4.5
+
+	INSERT INTO tb_produto (valor, frutaDoce, frutaAzeda, tamanho, emFalta, categoria_id) VALUES (7.50, "Maça", "Laranja", "Pequeno", false, 1);
+	INSERT INTO tb_produto (valor, frutaDoce, frutaAzeda, tamanho, emFalta, categoria_id) VALUES (3.50, "Uva", "Limão", "Pequeno", false, 2);
+	INSERT INTO tb_produto (valor, frutaDoce, frutaAzeda, tamanho, emFalta, categoria_id) VALUES (52.80, "Caqui", "Abacaxi", "Medio", false, 3);
+	INSERT INTO tb_produto (valor, frutaDoce, frutaAzeda, tamanho, emFalta, categoria_id) VALUES (59.50, "Manga", "Amora", "Pequeno", true, 4);
+	INSERT INTO tb_produto (valor, frutaDoce, frutaAzeda, tamanho, emFalta, categoria_id) VALUES (22.90, "Banana", "Morango", "Medio", false, 1);
+	INSERT INTO tb_produto (valor, frutaDoce, frutaAzeda, tamanho, emFalta, categoria_id) VALUES (30.50, "Mamão", "Caju", "Medio", false, 2);
+	INSERT INTO tb_produto (valor, frutaDoce, frutaAzeda, tamanho, emFalta, categoria_id) VALUES (16.30, "Jaca", "Cupuaçu", "Grande", false, 1);
+	INSERT INTO tb_produto (valor, frutaDoce, frutaAzeda, tamanho, emFalta, categoria_id) VALUES (60.70, "Figo", "Ameixa", "Pequeno", True, 3); 
+
+
+-- select * from tb_produto;
+
+Exercicos 4.6
+
+	select tb_produto.valor ,tb_produto.frutaDoce, tb_produto.frutaAzeda from tb_produto
+	where valor >50.00
+
+Exercicos 4.7
+	
+	select tb_produto.valor, tb_produto.frutaDoce from tb_produto
+	where tb_produto.valor > 3.00 and tb_produto.valor <60.00
+
+Exercicos 4.8
+
+	select tb_produto.frutaDoce, tb_produto.frutaAzeda from tb_produto
+	where tb_produto.frutaDoce like "%C%" 
+
+Exercicos 4.9
+
+	select tb_produto.valor, tb_produto.frutaDoce from tb_categoria
+	inner join tb_produto on tb_produto.categoria_id 
+
+Exercicos 4.10
+
+	select tb_produto.valor, tb_produto.frutaDoce from tb_produto
