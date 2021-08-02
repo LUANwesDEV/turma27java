@@ -24,7 +24,7 @@ public class Categoria {
 	private long id;
 	
 	@NotBlank
-	@Size(min = 2, max = 15)
+	@Size(min = 2, max = 100)
 	private String tipo;	
 	
 	@NotBlank
