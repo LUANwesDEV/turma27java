@@ -20,7 +20,7 @@ import com.generation.lojagames.model.Produtos;
 import com.generation.lojagames.repository.ProdutoRepository;
 
 @RestController
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+@CrossOrigin(value = "*")
 @RequestMapping("/produto")
 public class ProdutoController {
 	
@@ -36,7 +36,7 @@ public class ProdutoController {
 	public ResponseEntity<Produtos> getById(@PathVariable long id) {
 		return repository.findById(id)
 				.map(resp -> ResponseEntity.ok(resp))
-				.orElse(ResponseEntity.notFound().build());
+				.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
 	}
 	
 	@GetMapping("/nome/{nome}")

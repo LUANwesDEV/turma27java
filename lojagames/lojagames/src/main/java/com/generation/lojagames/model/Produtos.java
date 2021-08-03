@@ -76,7 +76,5 @@ public class Produtos {
 		this.categoria = categoria;
 	}
 	
-	
-
 }
 
