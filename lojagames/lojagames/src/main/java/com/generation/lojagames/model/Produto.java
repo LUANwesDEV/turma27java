@@ -13,8 +13,8 @@ import javax.validation.constraints.Size;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table(name = "tb_produtos")
-public class Produtos {
+@Table(name = "tb_produto")
+public class Produto {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) //auto_increment
@@ -31,10 +31,15 @@ public class Produtos {
 	
 											//ManyToOne criando uma chave estrangeira (categoria_id)
 	@ManyToOne 								//O ultimo nome da anotação refere-se a quantidade de dados que eu estou recebendo
-	@JsonIgnoreProperties("produtos")
+	@JsonIgnoreProperties("produto")
 	private Categoria categoria; 			//O tipo dado deve ser o mesmo nome da classe que eu quero relacionar 
 
 											//Não esquecer dos getters and setters da categoria
+	
+	@ManyToOne 								
+	@JsonIgnoreProperties("produto")
+	private Usuario usuario; 			 
+
 	
 	public long getId() {
 		return id;
@@ -74,6 +79,14 @@ public class Produtos {
 
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 	
 }
